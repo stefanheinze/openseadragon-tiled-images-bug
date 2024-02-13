@@ -1,0 +1,25 @@
+<head>
+
+</head>
+<body>
+<script src="https://openseadragon.github.io/openseadragon/openseadragon.min.js"></script>
+
+<main class="flex vert">
+  <div class="box">
+    <p>A rectangle with a red border which stays in position</p>
+  </div>
+
+  <div id="osd-container" class="flex box">
+    <div id="openseadragon1"></div>
+	<script defer>
+var viewer1 = OpenSeadragon({
+  id: "openseadragon1",
+  prefixUrl: "https://openseadragon.github.io/openseadragon/images/",
+  tileSources: "./dzi_files/index.xml",
+  crossOriginPolicy: 'Anonymous',
+  ajaxWithCredentials: false
+});
+</script>
+  </div>
+</main>
+</body>
