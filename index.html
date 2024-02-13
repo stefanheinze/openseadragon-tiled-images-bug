@@ -17,7 +17,21 @@ var viewer1 = OpenSeadragon({
   prefixUrl: "https://openseadragon.github.io/openseadragon/images/",
   tileSources: "./dzi_files/index.xml",
   crossOriginPolicy: 'Anonymous',
-  ajaxWithCredentials: false
+  showFullPageControl: false,
+  minZoomLevel: 1,
+  visibilityRatio: 1.0,
+  animationTime: 0.0,
+  autoResize: true,
+  preserveImageSizeOnResize: false,
+  loadTilesWithAjax: true,
+  maxZoomPixelRatio: 2,
+  zoomPerClick: 1.2,
+  zoomPerScroll: 1.2,
+  gestureSettingsMouse: {
+    clickToZoom: false,
+  },
+  constrainDuringPan: true,
+  subPixelRoundingForTransparency: { ['*']: 2 }, // Option is needed for all browsers to avoid lines between tiles
 });
 </script>
   </div>
