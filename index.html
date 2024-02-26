@@ -6,7 +6,14 @@
 
 <main style="width: 700px; height: 800px;">
   <div id="osd-container">
-      <div id="openseadragon1" style="width: 700px; height: 800px;"></div>
+    <div id="openseadragon1"></div>
+	<script defer>
+      var viewer1 = OpenSeadragon({
+        id: "openseadragon1",
+        prefixUrl: "https://openseadragon.github.io/openseadragon/images/",
+        tileSources: "./dzi_files/index.xml",
+    });
+</script>
   </div>
 </main>
 </body>
