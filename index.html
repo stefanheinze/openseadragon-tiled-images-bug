@@ -1,19 +1,278 @@
 <head>
-
+    <script type="text/javascript">
+        function setDebug()
+        {
+            window.debug = true;
+            window.viewer1.world.viewer.setDebugMode(!window.viewer1.world.viewer.debugMode);
+            window.viewer2.world.viewer.setDebugMode(!window.viewer2.world.viewer.debugMode);
+            window.viewer3.world.viewer.setDebugMode(!window.viewer3.world.viewer.debugMode);
+            window.viewer4.world.viewer.setDebugMode(!window.viewer4.world.viewer.debugMode);
+            window.viewer5.world.viewer.setDebugMode(!window.viewer5.world.viewer.debugMode);
+            window.viewer6.world.viewer.setDebugMode(!window.viewer6.world.viewer.debugMode);
+            window.viewer7.world.viewer.setDebugMode(!window.viewer7.world.viewer.debugMode);
+            window.viewer8.world.viewer.setDebugMode(!window.viewer8.world.viewer.debugMode);
+            window.viewer9.world.viewer.setDebugMode(!window.viewer9.world.viewer.debugMode);
+        }
+        function zoom(dragon, event) {
+            if (dragon === window.viewer1) {
+                window.viewer2.viewport.zoomTo(event.zoom, event.refPoint);
+                window.viewer3.viewport.zoomTo(event.zoom, event.refPoint);
+            }
+            if (dragon === window.viewer4) {
+                window.viewer5.viewport.zoomTo(event.zoom, event.refPoint);
+                window.viewer6.viewport.zoomTo(event.zoom, event.refPoint);
+            }
+            if (dragon === window.viewer7) {
+                window.viewer8.viewport.zoomTo(event.zoom, event.refPoint);
+                window.viewer9.viewport.zoomTo(event.zoom, event.refPoint);
+            }
+        }
+        function pan(dragon, event) {
+            if (dragon === window.viewer1) {
+                window.viewer2.viewport.panTo(event.center);
+                window.viewer3.viewport.panTo(event.center);
+            }
+            if (dragon === window.viewer4) {
+                window.viewer5.viewport.panTo(event.center);
+                window.viewer6.viewport.panTo(event.center);
+            }
+            if (dragon === window.viewer7) {
+                window.viewer8.viewport.panTo(event.center);
+                window.viewer9.viewport.panTo(event.center);
+            }
+        }
+    </script>
 </head>
 <body>
-<script src="https://openseadragon.github.io/openseadragon/openseadragon.min.js"></script>
 
-<main style="width: 700px; height: 800px;">
-  <div id="osd-container">
-    <div id="openseadragon1"></div>
-	<script defer>
-      var viewer1 = OpenSeadragon({
-        id: "openseadragon1",
-        prefixUrl: "https://openseadragon.github.io/openseadragon/images/",
-        tileSources: "./dzi_files/index.xml",
-    });
-</script>
-  </div>
+
+<main>
+    <script src="https://openseadragon.github.io/openseadragon/openseadragon.min.js"></script>
+    <div style="display: flex; flex-direction: column">
+        <div style="height: 100px" onclick="setDebug()">debug</div>
+        <div style="display: flex;" >
+            <div style="width: 800px; height: 800px;">
+
+                <div id="openseadragon1">overlap 4</div>
+                <script defer>
+                    window.viewer1 = OpenSeadragon({
+                        id: "openseadragon1",
+                        prefixUrl: "https://openseadragon.github.io/openseadragon/images/",
+                        tileSources: "./dzi_files/coleman-4-overlap.dzi.dzi",
+                        debugMode:  window.debug,
+                        crossOriginPolicy: "Anonymous",
+                        showFullPageControl: false,
+                        loadTilesWithAjax: true,
+                        ajaxHeaders: {
+                            "x-mayer-proxy-to-env": "czm01-cur-dev-euw"
+                        },
+                        zoomInButton: "089f6b75-8a0f-476c-95c7-61e9dd4a3e60-zoom-in",
+                        zoomOutButton: "089f6b75-8a0f-476c-95c7-61e9dd4a3e60-zoom-out",
+                        homeButton: "089f6b75-8a0f-476c-95c7-61e9dd4a3e60-fit-to-size",
+                        subPixelRoundingForTransparency: {
+                            "*": 2
+                        }
+                    });
+
+                    window.viewer1.addHandler('zoom', (event) => zoom(window.viewer1, event));
+                    window.viewer1.addHandler('pan', (event) => pan(window.viewer1, event));
+                </script>
+            </div>
+            <div style="width: 800px; height: 800px;">
+                <div id="openseadragon2">overlap 8</div>
+                <script defer>
+                    window.viewer2 = OpenSeadragon({
+                        id: "openseadragon2",
+                        prefixUrl: "https://openseadragon.github.io/openseadragon/images/",
+                        tileSources: "./dzi_files/coleman-8-overlap.dzi.dzi",
+                        debugMode:  window.debug,
+                        crossOriginPolicy: "Anonymous",
+                        showFullPageControl: false,
+                        loadTilesWithAjax: true,
+                        ajaxHeaders: {
+                            "x-mayer-proxy-to-env": "czm01-cur-dev-euw"
+                        },
+                        zoomInButton: "089f6b75-8a0f-476c-95c7-61e9dd4a3e60-zoom-in",
+                        zoomOutButton: "089f6b75-8a0f-476c-95c7-61e9dd4a3e60-zoom-out",
+                        homeButton: "089f6b75-8a0f-476c-95c7-61e9dd4a3e60-fit-to-size",
+                        subPixelRoundingForTransparency: {
+                            "*": 2
+                        }
+                    });
+                </script>
+            </div>
+            <div style="width: 800px; height: 800px;">
+                <div id="openseadragon3">overlap 16</div>
+                <script defer>
+                    window.viewer3 = OpenSeadragon({
+                        id: "openseadragon3",
+                        prefixUrl: "https://openseadragon.github.io/openseadragon/images/",
+                        tileSources: "./dzi_files/coleman-16-overlap.dzi.dzi",
+                        debugMode:  window.debug,
+                        crossOriginPolicy: "Anonymous",
+                        showFullPageControl: false,
+                        loadTilesWithAjax: true,
+                        ajaxHeaders: {
+                            "x-mayer-proxy-to-env": "czm01-cur-dev-euw"
+                        },
+                        zoomInButton: "089f6b75-8a0f-476c-95c7-61e9dd4a3e60-zoom-in",
+                        zoomOutButton: "089f6b75-8a0f-476c-95c7-61e9dd4a3e60-zoom-out",
+                        homeButton: "089f6b75-8a0f-476c-95c7-61e9dd4a3e60-fit-to-size",
+                        subPixelRoundingForTransparency: {
+                            "*": 2
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+        <div style="height: 100px"  onclick="setDebug()">debug</div>
+        <div style="display: flex;" >
+            <div style="width: 800px; height: 800px;">
+                <div id="openseadragon4">overlap 4</div>
+                <script defer>
+                    window.viewer4 = OpenSeadragon({
+                        id: "openseadragon4",
+                        prefixUrl: "https://openseadragon.github.io/openseadragon/images/",
+                        tileSources: "./dzi_files/tc-4-overlap.dzi.dzi",
+                        debugMode:  window.debug,
+                        crossOriginPolicy: "Anonymous",
+                        showFullPageControl: false,
+                        loadTilesWithAjax: true,
+                        ajaxHeaders: {
+                            "x-mayer-proxy-to-env": "czm01-cur-dev-euw"
+                        },
+                        zoomInButton: "089f6b75-8a0f-476c-95c7-61e9dd4a3e60-zoom-in",
+                        zoomOutButton: "089f6b75-8a0f-476c-95c7-61e9dd4a3e60-zoom-out",
+                        homeButton: "089f6b75-8a0f-476c-95c7-61e9dd4a3e60-fit-to-size",
+                        subPixelRoundingForTransparency: {
+                            "*": 2
+                        }
+                    });
+                    window.viewer4.addHandler('zoom', (event) => zoom(window.viewer4, event));
+                    window.viewer4.addHandler('pan', (event) => pan(window.viewer4, event));
+                </script>
+            </div>
+            <div style="width: 800px; height: 800px;">
+                <div id="openseadragon5">overlap 8</div>
+                <script defer>
+                    window.viewer5 = OpenSeadragon({
+                        id: "openseadragon5",
+                        prefixUrl: "https://openseadragon.github.io/openseadragon/images/",
+                        tileSources: "./dzi_files/tc-8-overlap.dzi.dzi",
+                        debugMode:  window.debug,
+                        crossOriginPolicy: "Anonymous",
+                        showFullPageControl: false,
+                        loadTilesWithAjax: true,
+                        ajaxHeaders: {
+                            "x-mayer-proxy-to-env": "czm01-cur-dev-euw"
+                        },
+                        zoomInButton: "089f6b75-8a0f-476c-95c7-61e9dd4a3e60-zoom-in",
+                        zoomOutButton: "089f6b75-8a0f-476c-95c7-61e9dd4a3e60-zoom-out",
+                        homeButton: "089f6b75-8a0f-476c-95c7-61e9dd4a3e60-fit-to-size",
+                        subPixelRoundingForTransparency: {
+                            "*": 2
+                        }
+                    });
+                </script>
+            </div>
+            <div style="width: 800px; height: 800px;">
+                <div id="openseadragon6">overlap 16</div>
+                <script defer>
+                    window.viewer6 = OpenSeadragon({
+                        id: "openseadragon6",
+                        prefixUrl: "https://openseadragon.github.io/openseadragon/images/",
+                        tileSources: "./dzi_files/tc-16-overlap.dzi.dzi",
+                        debugMode:  window.debug,
+                        crossOriginPolicy: "Anonymous",
+                        showFullPageControl: false,
+                        loadTilesWithAjax: true,
+                        ajaxHeaders: {
+                            "x-mayer-proxy-to-env": "czm01-cur-dev-euw"
+                        },
+                        zoomInButton: "089f6b75-8a0f-476c-95c7-61e9dd4a3e60-zoom-in",
+                        zoomOutButton: "089f6b75-8a0f-476c-95c7-61e9dd4a3e60-zoom-out",
+                        homeButton: "089f6b75-8a0f-476c-95c7-61e9dd4a3e60-fit-to-size",
+                        subPixelRoundingForTransparency: {
+                            "*": 2
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+        <div style="height: 100px"  onclick="setDebug()">debug</div>
+        <div style="display: flex;" >
+            <div style="width: 800px; height: 800px;">
+                <div id="openseadragon7">overlap 4</div>
+                <script defer>
+                    window.viewer7 = OpenSeadragon({
+                        id: "openseadragon7",
+                        prefixUrl: "https://openseadragon.github.io/openseadragon/images/",
+                        tileSources: "./dzi_files/big-4-overlap.dzi.dzi",
+                        debugMode:  window.debug,
+                        crossOriginPolicy: "Anonymous",
+                        showFullPageControl: false,
+                        loadTilesWithAjax: true,
+                        ajaxHeaders: {
+                            "x-mayer-proxy-to-env": "czm01-cur-dev-euw"
+                        },
+                        zoomInButton: "089f6b75-8a0f-476c-95c7-61e9dd4a3e60-zoom-in",
+                        zoomOutButton: "089f6b75-8a0f-476c-95c7-61e9dd4a3e60-zoom-out",
+                        homeButton: "089f6b75-8a0f-476c-95c7-61e9dd4a3e60-fit-to-size",
+                        subPixelRoundingForTransparency: {
+                            "*": 2
+                        }
+                    });
+                    window.viewer7.addHandler('zoom', (event) => zoom(window.viewer7, event));
+                    window.viewer7.addHandler('pan', (event) => pan(window.viewer7, event));
+                </script>
+            </div>
+            <div style="width: 800px; height: 800px;">
+                <div id="openseadragon8">overlap 8</div>
+                <script defer>
+                    window.viewer8 = OpenSeadragon({
+                        id: "openseadragon8",
+                        prefixUrl: "https://openseadragon.github.io/openseadragon/images/",
+                        tileSources: "./dzi_files/big-8-overlap.dzi.dzi",
+                        debugMode:  window.debug,
+                        crossOriginPolicy: "Anonymous",
+                        showFullPageControl: false,
+                        loadTilesWithAjax: true,
+                        ajaxHeaders: {
+                            "x-mayer-proxy-to-env": "czm01-cur-dev-euw"
+                        },
+                        zoomInButton: "089f6b75-8a0f-476c-95c7-61e9dd4a3e60-zoom-in",
+                        zoomOutButton: "089f6b75-8a0f-476c-95c7-61e9dd4a3e60-zoom-out",
+                        homeButton: "089f6b75-8a0f-476c-95c7-61e9dd4a3e60-fit-to-size",
+                        subPixelRoundingForTransparency: {
+                            "*": 2
+                        }
+                    });
+                </script>
+            </div>
+            <div style="width: 800px; height: 800px;">
+                <div id="openseadragon9">overlap 16</div>
+                <script defer>
+                    window.viewer9 = OpenSeadragon({
+                        id: "openseadragon9",
+                        prefixUrl: "https://openseadragon.github.io/openseadragon/images/",
+                        tileSources: "./dzi_files/big-16-overlap.dzi.dzi",
+                        debugMode:  window.debug,
+                        crossOriginPolicy: "Anonymous",
+                        showFullPageControl: false,
+                        loadTilesWithAjax: true,
+                        ajaxHeaders: {
+                            "x-mayer-proxy-to-env": "czm01-cur-dev-euw"
+                        },
+                        zoomInButton: "089f6b75-8a0f-476c-95c7-61e9dd4a3e60-zoom-in",
+                        zoomOutButton: "089f6b75-8a0f-476c-95c7-61e9dd4a3e60-zoom-out",
+                        homeButton: "089f6b75-8a0f-476c-95c7-61e9dd4a3e60-fit-to-size",
+                        subPixelRoundingForTransparency: {
+                            "*": 2
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
 </main>
 </body>

@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "openseadragon": "github:stefanheinze/openseadragon",
+    "sharp": "^0.33.2"
+  }
+}
